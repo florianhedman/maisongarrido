@@ -66,16 +66,13 @@
     }
     nav.scrolled { box-shadow: 0 4px 24px rgba(196,181,232,0.18); }
 
-    /* ── LOGO IMAGE in nav ──
-       Replace 'logo.jpg' with your actual logo filename.
-       Put the logo file in the same folder as index.html.        */
     .nav-logo-img {
       height: 100px;
       width: auto;
       object-fit: contain;
       display: block;
+      mix-blend-mode: multiply;
     }
-    /* Fallback text shown if logo image is missing */
     .nav-logo-text {
       font-family: var(--serif);
       font-size: 1.3rem;
@@ -84,7 +81,7 @@
       color: var(--rose-dk);
       text-decoration: none;
       letter-spacing: 0.02em;
-      display: none; /* hidden when image loads */
+      display: none;
     }
     .nav-logo-img.hidden { display: none; }
     .nav-logo-text.visible { display: block; }
@@ -114,11 +111,6 @@
       overflow: hidden;
     }
 
-    /* ── HERO BACKGROUND PHOTO ──
-       Option A: use a real photo — uncomment the line below and set your image path.
-       Option B: keep the pastel blobs (current look).
-       Put the photo file in the same folder as index.html.
-       Example: background-image: url('hero-photo.jpg');             */
     .hero-photo-bg {
       position: absolute; inset: 0;
       /* background-image: url('hero-photo.jpg'); */
@@ -134,9 +126,6 @@
 
     .hero-content { position: relative; z-index: 2; }
 
-    /* ── HERO LOGO (large, centered) ──
-       Replace 'logo.jpg' with your logo filename.
-       Adjust max-height to taste.                                   */
     .hero-logo-img {
       max-height: 800px;
       width: auto;
@@ -147,8 +136,8 @@
       margin-right: auto;
       opacity: 0;
       animation: fadeUp 1s 0.1s forwards;
+      mix-blend-mode: multiply;
     }
-    /* If you'd rather not show the logo twice, set display:none above */
 
     .hero-tag {
       display: inline-block;
@@ -250,9 +239,6 @@
     }
     .about-text p { color: var(--text-muted); margin-bottom: 1rem; font-size: 0.97rem; }
 
-    /* ── ABOUT PHOTO ──
-       Replace 'photo-apropos.jpg' with your image filename.
-       The image fills a rounded square on the right side.           */
     .about-photo {
       width: 100%; aspect-ratio: 1 / 1.1;
       border-radius: 28px; overflow: hidden;
@@ -289,7 +275,7 @@
     .approche-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.75; }
 
     /* ── SERVICES ── */
-    .services-intro { max-width: 640px; }
+    .services-intro { max-width: 100%; }
     .services-grid {
       display: grid; grid-template-columns: repeat(2,1fr);
       gap: 1.5rem; margin-top: 3rem;
@@ -306,10 +292,6 @@
     .service-card:nth-child(3):hover { border-color: var(--lav-lt); }
     .service-card:nth-child(4):hover { border-color: var(--peach-lt); }
 
-    /* ── SERVICE PHOTO ──
-       Each card has a photo area at the top.
-       Replace the src="" value with your image filename.
-       Suggested filenames are shown in each img tag below.          */
     .service-photo {
       width: 100%; height: 200px; overflow: hidden;
       background: var(--rose-lt);
@@ -331,72 +313,70 @@
     .service-list li { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.3rem; }
 
     /* ── PHILOSOPHIE ── */
-    .philo-wrap {
-      background: linear-gradient(135deg, var(--rose-lt) 0%, var(--lav-lt) 50%, var(--mint-lt) 100%);
-      border-radius: 32px; padding: 5rem 4rem; text-align: center;
-      position: relative; overflow: hidden;
-    }
-    .philo-wrap::before {
-      content: '✦';
-      position: absolute; font-size: 14rem; opacity: 0.06;
-      top: -2rem; right: -2rem; color: var(--rose-dk);
-    }
-    .philo-wrap .section-tag { background: rgba(255,255,255,0.7); }
-    .philo-wrap h2 { max-width: 700px; margin: 0 auto 1.5rem; }
-    .philo-wrap .divider { margin: 1.4rem auto; }
     .philo-quote {
       font-family: var(--serif); font-size: 1.35rem; font-style: italic;
       color: var(--dark-2); max-width: 680px; margin: 0 auto 2rem;
-      line-height: 1.7;
+      line-height: 1.7; text-align: center;
     }
     .philo-text {
-      font-size: 0.97rem; color: var(--dark-2);
+      font-size: 0.97rem; color: var(--text-muted);
       max-width: 640px; margin: 0 auto 1rem;
-      line-height: 1.85;
-    }
-    .philo-values {
-      display: flex; flex-wrap: wrap; justify-content: center;
-      gap: 0.75rem; margin-top: 2.5rem;
-    }
-    .philo-value {
-      background: rgba(255,255,255,0.75);
-      border-radius: 999px; padding: 0.5rem 1.4rem;
-      font-size: 0.82rem; font-weight: 700;
-      letter-spacing: 0.08em; color: var(--dark);
+      line-height: 1.85; text-align: center;
     }
 
-    /* ── GALLERY STRIP ── */
-    .gallery-strip {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 10px; border-radius: 24px; overflow: hidden;
-      height: 360px;
+    /* ── CAROUSEL ── */
+    .carousel-outer { position: relative; max-width: 1100px; margin: 0 auto; }
+    .carousel-btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      z-index: 10; width: 46px; height: 46px; border-radius: 50%;
+      border: 2px solid var(--rose-dk); background: rgba(253,248,242,0.92);
+      color: var(--rose-dk); font-size: 1rem;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: background 0.3s, color 0.3s, opacity 0.3s;
+      box-shadow: 0 4px 16px rgba(196,114,138,0.15); padding: 0;
     }
-
-    /* ── GALLERY PHOTOS ──
-       Replace the src="" values with your own image filenames.
-       Put all images in the same folder as index.html.
-       Suggested filenames shown below.                              */
-    .gallery-item { overflow: hidden; position: relative; cursor: pointer; }
-    .gallery-item img { width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.55s ease; }
-    .gallery-item:hover img { transform: scale(1.08); }
+    .carousel-btn:hover { background: var(--rose-dk); color: #fff; }
+    .carousel-btn.disabled { opacity: 0.2; pointer-events: none; }
+    .carousel-btn-prev { left: -23px; }
+    .carousel-btn-next { right: -23px; }
+    .carousel-track-wrap { overflow: hidden; border-radius: 20px; cursor: grab; user-select: none; }
+    .carousel-track-wrap.dragging { cursor: grabbing; }
+    .carousel-track {
+      display: flex; gap: 12px;
+      transition: transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94);
+      will-change: transform;
+    }
+    .carousel-track.no-transition { transition: none; }
+    .gallery-item {
+      flex: 0 0 340px; height: 420px;
+      border-radius: 20px; overflow: hidden; position: relative; cursor: pointer;
+    }
+    .gallery-item img {
+      width:100%; height:100%; object-fit:cover; display:block;
+      transition: transform 0.55s ease; pointer-events: none;
+    }
+    .gallery-item:hover img { transform: scale(1.06); }
     .gallery-overlay {
-      position:absolute;inset:0;
-      background:linear-gradient(to top,rgba(74,63,92,0.65) 0%,transparent 55%);
-      display:flex;align-items:flex-end;padding:1rem;
-      opacity:0;transition:opacity 0.4s;
+      position:absolute; inset:0;
+      background:linear-gradient(to top,rgba(74,63,92,0.68) 0%,transparent 55%);
+      display:flex; align-items:flex-end; padding:1.25rem;
+      opacity:0; transition:opacity 0.4s;
     }
     .gallery-item:hover .gallery-overlay { opacity:1; }
-    .gallery-overlay-text { font-family:var(--serif);font-size:0.95rem;font-style:italic;color:#fff; }
-
-    /* Placeholder for gallery items without a photo yet */
+    .gallery-overlay-text { font-family:var(--serif); font-size:1rem; font-style:italic; color:#fff; }
     .gallery-ph {
-      width:100%;height:100%;
-      display:flex;flex-direction:column;align-items:center;justify-content:center;
-      gap:0.5rem;
+      width:100%; height:100%;
+      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:0.6rem;
     }
-    .gallery-ph span { font-size:1.8rem; opacity:0.3; }
-    .gallery-ph p { font-size:0.72rem;color:var(--text-muted);text-align:center;padding:0 1rem;line-height:1.4; }
+    .gallery-ph span { font-size:2rem; opacity:0.3; }
+    .gallery-ph p { font-size:0.75rem; color:var(--text-muted); text-align:center; padding:0 1.5rem; line-height:1.5; }
+    .carousel-dots { display:flex; justify-content:center; gap:8px; margin-top:1.75rem; }
+    .carousel-dot {
+      width:8px; height:8px; border-radius:999px;
+      background:var(--rose-lt); border:2px solid var(--rose);
+      cursor:pointer; transition:all 0.3s; padding:0;
+    }
+    .carousel-dot.active { background:var(--rose-dk); border-color:var(--rose-dk); width:24px; }
 
     /* ── CONTACT ── */
     .contact-grid {
@@ -469,15 +449,14 @@
       .about-grid,.contact-grid{grid-template-columns:1fr;gap:2.5rem;}
       .approche-grid{grid-template-columns:1fr 1fr;}
       .services-grid{grid-template-columns:1fr;}
-      .gallery-strip{grid-template-columns:1fr 1fr;height:auto;}
-      .gallery-item{height:200px;}
-      .philo-wrap{padding:3rem 1.5rem;}
+      .gallery-item{flex:0 0 260px;height:320px;}
+      .carousel-btn-prev{left:-12px;} .carousel-btn-next{right:-12px;}
       footer{flex-direction:column;gap:1.25rem;text-align:center;}
       .footer-links{justify-content:center;}
     }
     @media(max-width:600px){
       .approche-grid{grid-template-columns:1fr;}
-      .gallery-strip{grid-template-columns:1fr;}
+      .gallery-item{flex:0 0 220px;height:280px;}
     }
   </style>
 </head>
@@ -488,12 +467,6 @@
 ═══════════════════════════════════════════ -->
 <nav id="navbar">
   <a href="#hero">
-    <!--
-      ★ LOGO dans la barre de navigation ★
-      1. Mettez votre fichier logo.jpg dans le même dossier que index.html
-      2. Remplacez "logo.jpg" ci-dessous par le vrai nom de votre fichier
-      3. Ajustez max-height dans le CSS (.nav-logo-img) si nécessaire
-    -->
     <img
       class="nav-logo-img"
       src="logo.jpg"
@@ -538,11 +511,6 @@
   <div class="float-shape"></div>
 
   <div class="hero-content">
-    <!--
-      ★ LOGO CENTRÉ DANS LE HERO ★
-      Même logique que le logo nav — remplacez "logo.jpg" par votre fichier.
-      Si vous ne voulez pas le logo ici, ajoutez style="display:none" à la balise img.
-    -->
     <img
       class="hero-logo-img"
       src="logo.jpg"
@@ -552,7 +520,7 @@
 
     <p class="hero-tag">Création d'Événements sur Mesure</p>
     <h1>Des Célébrations <em>Inoubliables</em><br>pour Vos Plus Beaux Moments</h1>
-    <p class="hero-sub">J’accompagne les familles dans l’organisation de leurs événements — mariages intimes, baptêmes, anniversaires et célébrations privées — avec une approche personnalisée, douce et attentionnée.
+    <p class="hero-sub">J'accompagne les familles dans l'organisation de leurs événements — mariages intimes, baptêmes, anniversaires et célébrations privées — avec une approche personnalisée, douce et attentionnée.
 
 Chaque détail est pensé pour vous permettre de profiter pleinement de votre journée, sans stress, en toute sérénité.</p>
     <div class="hero-cta">
@@ -561,10 +529,6 @@ Chaque détail est pensé pour vous permettre de profiter pleinement de votre jo
     </div>
   </div>
 
-  <!--<div class="scroll-hint">
-    <span>Découvrir</span>
-    <div class="scroll-arrow"></div>-->
-  </div>
 </section>
 
 
@@ -580,14 +544,12 @@ Chaque détail est pensé pour vous permettre de profiter pleinement de votre jo
         <h2>Maison Garrido Events</h2>
         <div class="divider"></div>
         <p>
-          <!-- ★ Remplacez ce paragraphe par votre présentation personnelle ★ -->
-              Je suis Marta Garrido, fondatrice de ce projet dédié à l’organisation d’événements sur mesure.
+          Je suis Marta Garrido, fondatrice de ce projet dédié à l'organisation d'événements sur mesure.
         </p>
         <p>
-          Formée en tourisme et spécialisée en organisation de congrès et d’événements, j’ai complété mon parcours par une formation de wedding planner. Mon expérience dans le secteur du tourisme et des événements m’a permis de développer une approche attentive, organisée et centrée sur les personnes.
+          Formée en tourisme et spécialisée en organisation de congrès et d'événements, j'ai complété mon parcours par une formation de wedding planner. Mon expérience dans le secteur du tourisme et des événements m'a permis de développer une approche attentive, organisée et centrée sur les personnes.
         </p>
         <br>
-        <!--<a class="btn btn-outline" href="#contact">Me Contacter</a>-->
       </div>
 
       <div class="about-photo reveal">
@@ -620,40 +582,11 @@ Chaque détail est pensé pour vous permettre de profiter pleinement de votre jo
   <div class="inner">
     <div class="reveal" style="text-align:center;max-width:600px;margin:0 auto 0;">
       <p class="section-tag">Mon Approche</p>
-      <h2>Simplicité. Écoute. Détails.<em>Chaque événement est unique.</em></h2>
+      <h2>Simplicité. Écoute. Détails.<br><em>Chaque événement est unique.</em></h2>
       <div class="divider" style="margin:1.4rem auto;"></div>
       <p style="color:var(--text-muted);font-size:0.97rem;">
-        <!-- ★ Décrivez ici votre méthode de travail en quelques mots ★ -->
         Chaque collaboration commence par une écoute attentive. Je construis avec vous, étape par étape, l'événement qui vous ressemble.
       </p>
-    </div>
-
-    <!--<div class="approche-grid reveal">
-      <div class="approche-card">
-        <div class="approche-icon">👂</div>
-        <div class="approche-title">Écoute & Conseil</div>
-        <p class="approche-desc">
-          <!-- ★ Personnalisez ce texte ★ -->
-        <!--  Je prends le temps de comprendre vos envies pour créer une ambiance qui vous ressemble, sans stress et sans complication.
-          <p>Mon rôle est de vous accompagner et de vous permettre de profiter pleinement de votre journée.</p>
-        </p>
-      </div>
-     <!-- <div class="approche-card">
-        <div class="approche-icon">🎨</div>
-        <div class="approche-title">Création Sur Mesure</div>
-        <p class="approche-desc">
-          <!-- ★ Personnalisez ce texte ★ -->
-    <!--      Chaque événement est unique. Je conçois une expérience personnalisée, en sélectionnant avec soin les prestataires, la décoration et les moindres détails qui feront la différence.
-        </p>
-      </div>
-      <div class="approche-card">
-        <div class="approche-icon">🌸</div>
-        <div class="approche-title">Sérénité le Jour J</div>
-        <p class="approche-desc">
-          <!-- ★ Personnalisez ce texte ★ -->
-     <!--     Le jour de votre événement, vous profitez. Je coordonne tout en coulisses pour que chaque instant se déroule avec fluidité, élégance et sans stress. 
-        </p>-->
-      </div>
     </div>
   </div>
 </div>
@@ -668,22 +601,15 @@ Chaque détail est pensé pour vous permettre de profiter pleinement de votre jo
       <p class="section-tag">Services</p>
       <h2>Des Prestations pour <em>Chaque Célébration</em></h2>
       <div class="divider"></div>
-      <p style="color:var(--text-muted);font-size:0.97rem;max-width:560px;">
-        <!-- ★ Décrivez brièvement l'offre globale ★ -->
-        Ce que je propose
-<p>- Mariages intimistes
-       Des célébrations simples, élégantes et pleines de sens.
-- Baptêmes
-      Une organisation douce et soignée pour un moment important.
-- Anniversaires
-       Des événements chaleureux adaptés à chaque âge
-- Événements privés
-       Dîners, fêtes familiales, célébrations sur mesure.
-</p>
+      <p style="color:var(--text-muted);font-size:0.97rem;margin-bottom:1rem;">
+        Ce que je propose :
       </p>
-    </div>
-
-
+      <ul style="color:var(--text-muted);font-size:0.97rem;max-width:100%;padding-left:1.4rem;line-height:2;">
+        <li><strong style="color:var(--dark);">Mariages intimistes</strong> — des célébrations simples, élégantes et pleines de sens.</li>
+        <li><strong style="color:var(--dark);">Baptêmes</strong> — une organisation douce et soignée pour un moment important.</li>
+        <li><strong style="color:var(--dark);">Anniversaires</strong> — des événements chaleureux adaptés à chaque âge.</li>
+        <li><strong style="color:var(--dark);">Événements privés</strong> — dîners, fêtes familiales, célébrations sur mesure.</li>
+      </ul>
     </div>
   </div>
 </div>
@@ -701,53 +627,167 @@ Chaque détail est pensé pour vous permettre de profiter pleinement de votre jo
     </div>
 
     <!--
-      ★ GALERIE — 5 photos ★
-      Remplacez chaque src="" par votre nom de fichier.
-      Noms suggérés : galerie-1.jpg, galerie-2.jpg, galerie-3.jpg, galerie-4.jpg, galerie-5.jpg
-      La première photo est plus grande (occupe 2 colonnes et 2 rangées).
+      ★ CARROUSEL — jusqu'à 16 photos ★
+      Placez vos fichiers dans le même dossier que index.html.
+      Pour ajouter une photo : copiez un bloc gallery-item et collez-le avant /carousel-track.
     -->
-    <div class="gallery-strip reveal">
+    <div class="carousel-outer reveal">
+      <button class="carousel-btn carousel-btn-prev" id="btnPrev" aria-label="Précédent">&#8592;</button>
+      <button class="carousel-btn carousel-btn-next" id="btnNext" aria-label="Suivant">&#8594;</button>
+      <div class="carousel-track-wrap" id="trackWrap">
+        <div class="carousel-track" id="carouselTrack">
 
-      <div class="gallery-item">
-        <img src="galerie-1.jpg" alt="Événement 1"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div class="gallery-ph" style="display:none;background:var(--rose-lt);">
-          <span>🌸</span><p>galerie-1.jpg<br>(grande photo)</p>
-        </div>
-        <div class="gallery-overlay"><span class="gallery-overlay-text">Votre légende ici</span></div>
-      </div>
+          <div class="gallery-item">
+            <img src="galerie-1.jpg" alt="Événement 1"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="gallery-ph" style="display:none;background:var(--rose-lt);">
+              <span>🌸</span><p>galerie-1.jpg</p>
+            </div>
+            <div class="gallery-overlay"><span class="gallery-overlay-text">Votre légende ici</span></div>
+          </div>
 
-      <div class="gallery-item">
-        <img src="galerie-2.jpg" alt="Événement 2"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div class="gallery-ph" style="display:none;background:var(--mint-lt);">
-          <span>🥂</span><p>galerie-2.jpg</p>
-        </div>
-        <div class="gallery-overlay"><span class="gallery-overlay-text">Votre légende ici</span></div>
-      </div>
+          <div class="gallery-item">
+            <img src="galerie-2.jpg" alt="Événement 2"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="gallery-ph" style="display:none;background:var(--mint-lt);">
+              <span>🥂</span><p>galerie-2.jpg</p>
+            </div>
+            <div class="gallery-overlay"><span class="gallery-overlay-text">Votre légende ici</span></div>
+          </div>
 
-      <div class="gallery-item">
-        <img src="galerie-3.jpg" alt="Événement 3"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div class="gallery-ph" style="display:none;background:var(--lav-lt);">
-          <span>💐</span><p>galerie-3.jpg</p>
-        </div>
-        <div class="gallery-overlay"><span class="gallery-overlay-text">Votre légende ici</span></div>
-      </div>
+          <div class="gallery-item">
+            <img src="galerie-3.jpg" alt="Événement 3"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="gallery-ph" style="display:none;background:var(--lav-lt);">
+              <span>💐</span><p>galerie-3.jpg</p>
+            </div>
+            <div class="gallery-overlay"><span class="gallery-overlay-text">Votre légende ici</span></div>
+          </div>
 
-      <div class="gallery-item">
-        <img src="galerie-4.jpg" alt="Événement 4"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
-        <div class="gallery-ph" style="display:none;background:var(--peach-lt);">
-          <span>🎂</span><p>galerie-4.jpg</p>
-        </div>
-        <div class="gallery-overlay"><span class="gallery-overlay-text">Votre légende ici</span></div>
-      </div>
+          <div class="gallery-item">
+            <img src="galerie-4.jpg" alt="Événement 4"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="gallery-ph" style="display:none;background:var(--peach-lt);">
+              <span>🎂</span><p>galerie-4.jpg</p>
+            </div>
+            <div class="gallery-overlay"><span class="gallery-overlay-text">Votre légende ici</span></div>
+          </div>
 
-    </div>
+          <div class="gallery-item">
+            <img src="galerie-5.jpg" alt="Événement 5"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="gallery-ph" style="display:none;background:var(--rose-lt);">
+              <span>🌷</span><p>galerie-5.jpg</p>
+            </div>
+            <div class="gallery-overlay"><span class="gallery-overlay-text">Votre légende ici</span></div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="galerie-6.jpg" alt="Événement 6"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="gallery-ph" style="display:none;background:var(--mint-lt);">
+              <span>🕯️</span><p>galerie-6.jpg</p>
+            </div>
+            <div class="gallery-overlay"><span class="gallery-overlay-text">Votre légende ici</span></div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="galerie-7.jpg" alt="Événement 7"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="gallery-ph" style="display:none;background:var(--lav-lt);">
+              <span>🎀</span><p>galerie-7.jpg</p>
+            </div>
+            <div class="gallery-overlay"><span class="gallery-overlay-text">Votre légende ici</span></div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="galerie-8.jpg" alt="Événement 8"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="gallery-ph" style="display:none;background:var(--peach-lt);">
+              <span>🥂</span><p>galerie-8.jpg</p>
+            </div>
+            <div class="gallery-overlay"><span class="gallery-overlay-text">Votre légende ici</span></div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="galerie-9.jpg" alt="Événement 9"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="gallery-ph" style="display:none;background:var(--rose-lt);">
+              <span>🌸</span><p>galerie-9.jpg</p>
+            </div>
+            <div class="gallery-overlay"><span class="gallery-overlay-text">Votre légende ici</span></div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="galerie-10.jpg" alt="Événement 10"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="gallery-ph" style="display:none;background:var(--mint-lt);">
+              <span>🥂</span><p>galerie-10.jpg</p>
+            </div>
+            <div class="gallery-overlay"><span class="gallery-overlay-text">Votre légende ici</span></div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="galerie-11.jpg" alt="Événement 11"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="gallery-ph" style="display:none;background:var(--lav-lt);">
+              <span>💐</span><p>galerie-11.jpg</p>
+            </div>
+            <div class="gallery-overlay"><span class="gallery-overlay-text">Votre légende ici</span></div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="galerie-12.jpg" alt="Événement 12"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="gallery-ph" style="display:none;background:var(--peach-lt);">
+              <span>🎂</span><p>galerie-12.jpg</p>
+            </div>
+            <div class="gallery-overlay"><span class="gallery-overlay-text">Votre légende ici</span></div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="galerie-13.jpg" alt="Événement 13"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="gallery-ph" style="display:none;background:var(--rose-lt);">
+              <span>🌷</span><p>galerie-13.jpg</p>
+            </div>
+            <div class="gallery-overlay"><span class="gallery-overlay-text">Votre légende ici</span></div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="galerie-14.jpg" alt="Événement 14"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="gallery-ph" style="display:none;background:var(--mint-lt);">
+              <span>🕯️</span><p>galerie-14.jpg</p>
+            </div>
+            <div class="gallery-overlay"><span class="gallery-overlay-text">Votre légende ici</span></div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="galerie-15.jpg" alt="Événement 15"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="gallery-ph" style="display:none;background:var(--lav-lt);">
+              <span>🎀</span><p>galerie-15.jpg</p>
+            </div>
+            <div class="gallery-overlay"><span class="gallery-overlay-text">Votre légende ici</span></div>
+          </div>
+
+          <div class="gallery-item">
+            <img src="galerie-16.jpg" alt="Événement 16"
+              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+            <div class="gallery-ph" style="display:none;background:var(--peach-lt);">
+              <span>🥂</span><p>galerie-16.jpg</p>
+            </div>
+            <div class="gallery-overlay"><span class="gallery-overlay-text">Votre légende ici</span></div>
+          </div>
+
+        </div><!-- /carousel-track -->
+      </div><!-- /carousel-track-wrap -->
+      <div class="carousel-dots" id="carouselDots"></div>
+    </div><!-- /carousel-outer -->
 
     <p style="text-align:center;margin-top:1.5rem;font-size:0.82rem;color:var(--text-muted);font-style:italic;">
-      Placez vos photos dans le même dossier que <code>index.html</code> avec les noms indiqués ci-dessus.
+      Nommez vos photos <code>galerie-1.jpg</code> à <code>galerie-16.jpg</code> et placez-les dans le même dossier que <code>index.html</code>.
     </p>
   </div>
 </div>
@@ -758,33 +798,19 @@ Chaque détail est pensé pour vous permettre de profiter pleinement de votre jo
 ═══════════════════════════════════════════ -->
 <div id="philosophie" class="section-wrap plain">
   <div class="inner">
-    <div class="philo-wrap reveal">
+    <div class="reveal" style="text-align:center;max-width:700px;margin:0 auto;">
       <p class="section-tag">Philosophie</p>
       <h2>Ce en Quoi Je <em>Crois</em></h2>
-      <div class="divider"></div>
-
+      <div class="divider" style="margin:1.4rem auto;"></div>
       <p class="philo-quote">
-        <!-- ★ Votre citation ou devise personnelle ★ -->
         « Un événement réussi, c'est celui où l'on sent que tout a été pensé avec amour — et où rien ne semble avoir demandé d'effort. »
       </p>
-
       <p class="philo-text">
-        <!-- ★ Remplacez par votre philosophie, vos valeurs profondes ★ -->
         Je crois que chaque célébration est un acte d'amour. Qu'il s'agisse d'unir deux personnes, d'accueillir un enfant dans le monde ou de réunir une famille autour d'une table, chaque moment mérite d'être vécu pleinement, sans stress et avec une beauté qui vous ressemble.
       </p>
       <p class="philo-text">
-        <!-- ★ Deuxième paragraphe de philosophie ★ -->
         Mon rôle est de disparaître dans les coulisses pour que vous soyez entièrement présente à vos émotions, à vos proches et à votre bonheur. C'est cette discrétion alliée à l'excellence qui est au cœur de Maison Garrido Events.
       </p>
-
-      <!--<div class="philo-values">
-        <span class="philo-value">✦ Élégance</span>
-        <span class="philo-value">✦ Bienveillance</span>
-        <span class="philo-value">✦ Authenticité</span>
-        <span class="philo-value">✦ Attention au détail</span>
-        <span class="philo-value">✦ Sérénité</span>
-        <span class="philo-value">✦ Sur mesure</span>
-      </div>-->
     </div>
   </div>
 </div>
@@ -811,12 +837,10 @@ Remplissez le formulaire ou contactez-moi directement — je vous réponds sous 
         <ul class="contact-details">
           <li>
             <span class="detail-label">E-mail</span>
-            <!-- ★ Remplacez par votre adresse e-mail ★ -->
             <span class="detail-val">bonjour@maisongarrido.ch</span>
           </li>
           <li>
             <span class="detail-label">Téléphone</span>
-            <!-- ★ Remplacez par votre numéro ★ -->
             <span class="detail-val">+41 00 000 00 00</span>
           </li>
           <li>
@@ -891,13 +915,11 @@ Remplissez le formulaire ou contactez-moi directement — je vous réponds sous 
 
 
 <script>
-  // Nav scroll shadow
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 60);
   });
 
-  // Scroll reveal
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
@@ -906,7 +928,72 @@ Remplissez le formulaire ou contactez-moi directement — je vous réponds sous 
   }, { threshold: 0.08 });
   reveals.forEach(el => observer.observe(el));
 
-  // Contact form
+  // ── CAROUSEL ──
+  (function() {
+    const track    = document.getElementById('carouselTrack');
+    const wrap     = document.getElementById('trackWrap');
+    const btnPrev  = document.getElementById('btnPrev');
+    const btnNext  = document.getElementById('btnNext');
+    const dotsWrap = document.getElementById('carouselDots');
+    if (!track) return;
+    const items = track.querySelectorAll('.gallery-item');
+    const count = items.length;
+    const gap = 12;
+    let current = 0;
+    items.forEach((_, i) => {
+      const d = document.createElement('button');
+      d.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', 'Photo ' + (i+1));
+      d.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(d);
+    });
+    const dots = dotsWrap.querySelectorAll('.carousel-dot');
+    function itemW() { return items[0].getBoundingClientRect().width; }
+    function getOffset(i) { return i * (itemW() + gap); }
+    function maxIdx() {
+      const visible = Math.round(wrap.getBoundingClientRect().width / (itemW() + gap));
+      return Math.max(0, count - visible);
+    }
+    function goTo(i) {
+      current = Math.max(0, Math.min(i, maxIdx()));
+      track.style.transform = `translateX(-${getOffset(current)}px)`;
+      dots.forEach((d, j) => d.classList.toggle('active', j === current));
+      btnPrev.classList.toggle('disabled', current === 0);
+      btnNext.classList.toggle('disabled', current >= maxIdx());
+    }
+    btnPrev.addEventListener('click', () => goTo(current - 1));
+    btnNext.addEventListener('click', () => goTo(current + 1));
+    window.addEventListener('resize', () => goTo(current));
+    goTo(0);
+    // Mouse drag
+    let dragStartX = null, trackStartX = 0, didDrag = false;
+    wrap.addEventListener('mousedown', e => {
+      dragStartX = e.clientX; trackStartX = getOffset(current); didDrag = false;
+      wrap.classList.add('dragging'); track.classList.add('no-transition');
+    });
+    window.addEventListener('mousemove', e => {
+      if (dragStartX === null) return;
+      if (Math.abs(e.clientX - dragStartX) > 4) didDrag = true;
+      track.style.transform = `translateX(-${trackStartX - (e.clientX - dragStartX)}px)`;
+    });
+    window.addEventListener('mouseup', e => {
+      if (dragStartX === null) return;
+      const dx = e.clientX - dragStartX;
+      wrap.classList.remove('dragging'); track.classList.remove('no-transition');
+      dragStartX = null;
+      if (Math.abs(dx) > 60) goTo(dx < 0 ? current + 1 : current - 1);
+      else goTo(current);
+      if (didDrag) wrap.addEventListener('click', ev => { ev.stopPropagation(); ev.preventDefault(); }, { once: true, capture: true });
+    });
+    // Touch
+    let touchX = 0;
+    wrap.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+    wrap.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - touchX;
+      if (Math.abs(dx) > 50) goTo(dx < 0 ? current + 1 : current - 1);
+    });
+  })();
+
   function handleSubmit() {
     const name  = document.getElementById('name').value.trim();
     const email = document.getElementById('email').value.trim();
