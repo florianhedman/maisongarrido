@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maison Garrido Events — Des Célébrations Inoubliables</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --rose:      #F2A7BB;
+      --rose-lt:   #FAD8E3;
+      --rose-dk:   #C4728A;
+      --mint:      #A8D8C2;
+      --mint-lt:   #D6EFE6;
+      --lavender:  #C4B5E8;
+      --lav-lt:    #E8E2F8;
+      --peach:     #F9C8A0;
+      --peach-lt:  #FDE9D4;
+      --cream:     #FDF8F2;
+      --white:     #FFFFFF;
+      --dark:      #4A3F5C;
+      --dark-2:    #6B5D7A;
+      --text-muted:#9B8FA8;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans:  'Nunito', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--cream);
+      color: var(--dark);
+      font-weight: 400;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image:
+        radial-gradient(circle, var(--rose-lt) 2px, transparent 2px),
+        radial-gradient(circle, var(--mint-lt) 2px, transparent 2px),
+        radial-gradient(circle, var(--lav-lt)  2px, transparent 2px),
+        radial-gradient(circle, var(--peach-lt)2px, transparent 2px);
+      background-size: 120px 120px, 80px 80px, 100px 100px, 90px 90px;
+      background-position: 0 0, 40px 40px, 70px 10px, 20px 70px;
+      opacity: 0.45;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1rem 4rem;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(253,248,242,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(242,167,187,0.2);
+      transition: box-shadow 0.3s;
+    }
+    nav.scrolled { box-shadow: 0 4px 24px rgba(196,181,232,0.18); }
+
+    /* ── LOGO IMAGE in nav ──
+       Replace 'logo.jpg' with your actual logo filename.
+       Put the logo file in the same folder as index.html.        */
+    .nav-logo-img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+    /* Fallback text shown if logo image is missing */
+    .nav-logo-text {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--rose-dk);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      display: none; /* hidden when image loads */
+    }
+    .nav-logo-img.hidden { display: none; }
+    .nav-logo-text.visible { display: block; }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links a {
+      font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--dark-2); text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--rose-dk); }
+    .nav-links .nav-cta {
+      background: var(--rose); color: var(--white);
+      padding: 0.5rem 1.2rem; border-radius: 999px;
+      transition: background 0.3s;
+    }
+    .nav-links .nav-cta:hover { background: var(--rose-dk); color: var(--white); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center; text-align: center;
+      position: relative; z-index: 1;
+      padding: 9rem 2rem 5rem;
+      overflow: hidden;
+    }
+
+    /* ── HERO BACKGROUND PHOTO ──
+       Option A: use a real photo — uncomment the line below and set your image path.
+       Option B: keep the pastel blobs (current look).
+       Put the photo file in the same folder as index.html.
+       Example: background-image: url('hero-photo.jpg');             */
+    .hero-photo-bg {
+      position: absolute; inset: 0;
+      /* background-image: url('hero-photo.jpg'); */
+      background-size: cover; background-position: center;
+      opacity: 0.18;
+      z-index: 0;
+    }
+
+    .blob { position: absolute; border-radius: 50%; filter: blur(60px); opacity: 0.38; pointer-events: none; }
+    .blob-1 { width: 520px; height: 520px; background: var(--rose-lt);   top: -120px; right: -120px; }
+    .blob-2 { width: 420px; height: 420px; background: var(--mint-lt);   bottom: -60px; left: -100px; }
+    .blob-3 { width: 320px; height: 320px; background: var(--lav-lt);    top: 38%; left: 58%; }
+
+    .hero-content { position: relative; z-index: 2; }
+
+    /* ── HERO LOGO (large, centered) ──
+       Replace 'logo.jpg' with your logo filename.
+       Adjust max-height to taste.                                   */
+    .hero-logo-img {
+      max-height: 120px;
+      width: auto;
+      object-fit: contain;
+      margin-bottom: 2rem;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      opacity: 0;
+      animation: fadeUp 1s 0.1s forwards;
+    }
+    /* If you'd rather not show the logo twice, set display:none above */
+
+    .hero-tag {
+      display: inline-block;
+      background: var(--rose-lt); color: var(--rose-dk);
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      padding: 0.4rem 1.2rem; border-radius: 999px;
+      margin-bottom: 1.75rem;
+      opacity: 0; animation: fadeUp 1s 0.25s forwards;
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 6.5vw, 5.5rem);
+      font-weight: 400; line-height: 1.1;
+      color: var(--dark); max-width: 820px;
+      opacity: 0; animation: fadeUp 1s 0.45s forwards;
+    }
+    h1 em { color: var(--rose-dk); font-style: italic; }
+
+    .hero-sub {
+      margin-top: 1.75rem; font-size: 1.05rem;
+      color: var(--text-muted); max-width: 500px; margin-left: auto; margin-right: auto;
+      opacity: 0; animation: fadeUp 1s 0.65s forwards;
+    }
+
+    .hero-cta {
+      margin-top: 2.5rem;
+      display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+      opacity: 0; animation: fadeUp 1s 0.85s forwards;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2.2rem;
+      font-family: var(--sans); font-size: 0.82rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; border-radius: 999px;
+      border: 2px solid var(--rose-dk);
+      color: var(--white); background: var(--rose-dk);
+      transition: all 0.3s; cursor: pointer;
+    }
+    .btn:hover { background: transparent; color: var(--rose-dk); }
+    .btn-outline { background: transparent; color: var(--rose-dk); }
+    .btn-outline:hover { background: var(--rose-dk); color: var(--white); }
+
+    .float-shape {
+      position: absolute; border-radius: 50%; opacity: 0.45;
+      animation: floatAnim 8s ease-in-out infinite;
+    }
+    .float-shape:nth-child(1){ width:16px;height:16px;background:var(--rose);    top:22%;left:9%;   animation-delay:0s; }
+    .float-shape:nth-child(2){ width:11px;height:11px;background:var(--mint);    top:62%;left:6%;   animation-delay:1.5s; }
+    .float-shape:nth-child(3){ width:20px;height:20px;background:var(--lavender);top:28%;right:7%;  animation-delay:0.8s; }
+    .float-shape:nth-child(4){ width:10px;height:10px;background:var(--peach);   top:72%;right:10%; animation-delay:2s; }
+    .float-shape:nth-child(5){ width:14px;height:14px;background:var(--rose-lt); top:82%;left:22%;  animation-delay:1s;   border-radius:4px;transform:rotate(45deg); }
+    .float-shape:nth-child(6){ width:13px;height:13px;background:var(--mint-lt); top:14%;right:24%; animation-delay:2.5s; border-radius:4px;transform:rotate(20deg); }
+
+    .scroll-hint {
+      position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+      opacity: 0; animation: fadeUp 1s 1.2s forwards; z-index: 2;
+    }
+    .scroll-hint span { font-size: 0.66rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--text-muted); }
+    .scroll-arrow { width: 2px; height: 36px; background: linear-gradient(to bottom, var(--rose-dk), transparent); border-radius: 2px; animation: scrollPulse 2s infinite; }
+
+    /* ── SHARED SECTION STYLES ── */
+    .section-wrap { position: relative; z-index: 1; padding: 7rem 4rem; }
+    .section-wrap.alt { background: var(--white); }
+    .section-wrap.plain { background: var(--cream); }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--rose-dk); background: var(--rose-lt);
+      padding: 0.3rem 1rem; border-radius: 999px;
+      margin-bottom: 1.1rem;
+    }
+    h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400; line-height: 1.15; color: var(--dark);
+      margin-bottom: 1rem;
+    }
+    h2 em { font-style: italic; color: var(--rose-dk); }
+
+    .divider {
+      width: 48px; height: 3px;
+      background: linear-gradient(90deg, var(--rose), var(--lavender));
+      border-radius: 2px; margin: 1.4rem 0;
+    }
+
+    .inner { max-width: 1100px; margin: 0 auto; }
+
+    /* ── À PROPOS ── */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+    }
+    .about-text p { color: var(--text-muted); margin-bottom: 1rem; font-size: 0.97rem; }
+
+    /* ── ABOUT PHOTO ──
+       Replace 'photo-apropos.jpg' with your image filename.
+       The image fills a rounded square on the right side.           */
+    .about-photo {
+      width: 100%; aspect-ratio: 1 / 1.1;
+      border-radius: 28px; overflow: hidden;
+      background: var(--rose-lt);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .about-photo img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .about-photo-placeholder {
+      text-align: center; color: var(--rose-dk); padding: 2rem;
+    }
+    .about-photo-placeholder .ph-icon { font-size: 3rem; margin-bottom: 1rem; opacity: 0.4; }
+    .about-photo-placeholder p { font-size: 0.82rem; color: var(--rose-dk); opacity: 0.7; line-height: 1.5; }
+
+    /* ── MON APPROCHE ── */
+    .approche-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .approche-card {
+      background: var(--white); border-radius: 22px;
+      padding: 2rem 1.75rem;
+      border: 2px solid transparent;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .approche-card:hover { transform: translateY(-5px); }
+    .approche-card:nth-child(1):hover { border-color: var(--rose-lt); }
+    .approche-card:nth-child(2):hover { border-color: var(--mint-lt); }
+    .approche-card:nth-child(3):hover { border-color: var(--lav-lt); }
+    .approche-icon { font-size: 2rem; margin-bottom: 0.9rem; }
+    .approche-title { font-family: var(--serif); font-size: 1.2rem; font-weight: 500; margin-bottom: 0.6rem; color: var(--dark); }
+    .approche-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.75; }
+
+    /* ── SERVICES ── */
+    .services-intro { max-width: 640px; }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(2,1fr);
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .service-card {
+      background: var(--white); border-radius: 24px;
+      overflow: hidden; position: relative;
+      border: 2px solid transparent;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 14px 40px rgba(196,181,232,0.18); }
+    .service-card:nth-child(1):hover { border-color: var(--rose-lt); }
+    .service-card:nth-child(2):hover { border-color: var(--mint-lt); }
+    .service-card:nth-child(3):hover { border-color: var(--lav-lt); }
+    .service-card:nth-child(4):hover { border-color: var(--peach-lt); }
+
+    /* ── SERVICE PHOTO ──
+       Each card has a photo area at the top.
+       Replace the src="" value with your image filename.
+       Suggested filenames are shown in each img tag below.          */
+    .service-photo {
+      width: 100%; height: 200px; overflow: hidden;
+      background: var(--rose-lt);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .service-photo img { width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.5s; }
+    .service-card:hover .service-photo img { transform: scale(1.05); }
+    .service-photo-placeholder {
+      text-align:center; color: var(--rose-dk); opacity:0.5;
+      font-size:0.8rem; padding:1rem;
+    }
+    .service-photo-placeholder span { display:block; font-size:2rem; margin-bottom:0.4rem; }
+
+    .service-body { padding: 1.75rem 2rem 2rem; }
+    .service-icon { font-size: 1.6rem; margin-bottom: 0.6rem; }
+    .service-title { font-family: var(--serif); font-size: 1.5rem; font-weight: 500; margin-bottom: 0.6rem; color: var(--dark); }
+    .service-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.8; }
+    .service-list { margin-top: 0.8rem; padding-left: 1rem; }
+    .service-list li { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.3rem; }
+
+    /* ── PHILOSOPHIE ── */
+    .philo-wrap {
+      background: linear-gradient(135deg, var(--rose-lt) 0%, var(--lav-lt) 50%, var(--mint-lt) 100%);
+      border-radius: 32px; padding: 5rem 4rem; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .philo-wrap::before {
+      content: '✦';
+      position: absolute; font-size: 14rem; opacity: 0.06;
+      top: -2rem; right: -2rem; color: var(--rose-dk);
+    }
+    .philo-wrap .section-tag { background: rgba(255,255,255,0.7); }
+    .philo-wrap h2 { max-width: 700px; margin: 0 auto 1.5rem; }
+    .philo-wrap .divider { margin: 1.4rem auto; }
+    .philo-quote {
+      font-family: var(--serif); font-size: 1.35rem; font-style: italic;
+      color: var(--dark-2); max-width: 680px; margin: 0 auto 2rem;
+      line-height: 1.7;
+    }
+    .philo-text {
+      font-size: 0.97rem; color: var(--dark-2);
+      max-width: 640px; margin: 0 auto 1rem;
+      line-height: 1.85;
+    }
+    .philo-values {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 0.75rem; margin-top: 2.5rem;
+    }
+    .philo-value {
+      background: rgba(255,255,255,0.75);
+      border-radius: 999px; padding: 0.5rem 1.4rem;
+      font-size: 0.82rem; font-weight: 700;
+      letter-spacing: 0.08em; color: var(--dark);
+    }
+
+    /* ── GALLERY STRIP ── */
+    .gallery-strip {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 10px; border-radius: 24px; overflow: hidden;
+      height: 360px;
+    }
+
+    /* ── GALLERY PHOTOS ──
+       Replace the src="" values with your own image filenames.
+       Put all images in the same folder as index.html.
+       Suggested filenames shown below.                              */
+    .gallery-item { overflow: hidden; position: relative; cursor: pointer; }
+    .gallery-item img { width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.55s ease; }
+    .gallery-item:hover img { transform: scale(1.08); }
+    .gallery-overlay {
+      position:absolute;inset:0;
+      background:linear-gradient(to top,rgba(74,63,92,0.65) 0%,transparent 55%);
+      display:flex;align-items:flex-end;padding:1rem;
+      opacity:0;transition:opacity 0.4s;
+    }
+    .gallery-item:hover .gallery-overlay { opacity:1; }
+    .gallery-overlay-text { font-family:var(--serif);font-size:0.95rem;font-style:italic;color:#fff; }
+
+    /* Placeholder for gallery items without a photo yet */
+    .gallery-ph {
+      width:100%;height:100%;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      gap:0.5rem;
+    }
+    .gallery-ph span { font-size:1.8rem; opacity:0.3; }
+    .gallery-ph p { font-size:0.72rem;color:var(--text-muted);text-align:center;padding:0 1rem;line-height:1.4; }
+
+    /* ── CONTACT ── */
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: start;
+    }
+    .contact-info p { color: var(--text-muted); font-size: 0.96rem; margin-bottom: 2rem; }
+    .contact-details { list-style: none; }
+    .contact-details li {
+      display: flex; align-items: baseline; gap: 1rem;
+      padding: 0.85rem 0; border-bottom: 1px solid rgba(196,181,232,0.2);
+      font-size: 0.9rem;
+    }
+    .contact-details li:first-child { border-top: 1px solid rgba(196,181,232,0.2); }
+    .detail-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rose-dk); min-width: 80px; }
+    .detail-val { color: var(--dark-2); }
+
+    .contact-form { display:flex;flex-direction:column;gap:1.1rem; }
+    .form-group { display:flex;flex-direction:column;gap:0.35rem; }
+    .form-group label { font-size:0.7rem;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--dark-2); }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: var(--white); border: 2px solid rgba(196,181,232,0.3);
+      border-radius: 12px; color: var(--dark);
+      padding: 0.82rem 1rem; font-family: var(--sans); font-size:0.92rem;
+      outline:none; transition:border-color 0.3s; appearance:none;
+    }
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color:var(--text-muted);opacity:0.55; }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--rose); }
+    .form-group textarea { resize:vertical;min-height:120px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark); padding: 2.5rem 4rem;
+      display:flex;align-items:center;justify-content:space-between;
+      position:relative;z-index:1;
+    }
+    .footer-logo { font-family:var(--serif);font-size:1.15rem;color:var(--rose-lt);font-style:italic; }
+    .footer-copy { font-size:0.76rem;color:rgba(255,255,255,0.3); }
+    .footer-links { display:flex;gap:2rem; }
+    .footer-links a { font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.38);text-decoration:none;transition:color 0.3s; }
+    .footer-links a:hover { color:var(--rose-lt); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity:0;transform:translateY(24px); }
+      to   { opacity:1;transform:translateY(0); }
+    }
+    @keyframes scrollPulse {
+      0%,100%{opacity:1;transform:scaleY(1);}
+      50%{opacity:0.4;transform:scaleY(0.7);}
+    }
+    @keyframes floatAnim {
+      0%,100%{transform:translateY(0) rotate(0deg);}
+      33%{transform:translateY(-16px) rotate(10deg);}
+      66%{transform:translateY(9px) rotate(-8deg);}
+    }
+    .reveal { opacity:0;transform:translateY(28px);transition:opacity 0.8s ease,transform 0.8s ease; }
+    .reveal.visible { opacity:1;transform:translateY(0); }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:960px){
+      nav{padding:1rem 1.5rem;}
+      .nav-links{display:none;}
+      .section-wrap{padding:5rem 1.5rem;}
+      .about-grid,.contact-grid{grid-template-columns:1fr;gap:2.5rem;}
+      .approche-grid{grid-template-columns:1fr 1fr;}
+      .services-grid{grid-template-columns:1fr;}
+      .gallery-strip{grid-template-columns:1fr 1fr;height:auto;}
+      .gallery-item{height:200px;}
+      .philo-wrap{padding:3rem 1.5rem;}
+      footer{flex-direction:column;gap:1.25rem;text-align:center;}
+      .footer-links{justify-content:center;}
+    }
+    @media(max-width:600px){
+      .approche-grid{grid-template-columns:1fr;}
+      .gallery-strip{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+     NAV
+═══════════════════════════════════════════ -->
+<nav id="navbar">
+  <a href="#hero">
+    <!--
+      ★ LOGO dans la barre de navigation ★
+      1. Mettez votre fichier logo.jpg dans le même dossier que index.html
+      2. Remplacez "logo.jpg" ci-dessous par le vrai nom de votre fichier
+      3. Ajustez max-height dans le CSS (.nav-logo-img) si nécessaire
+    -->
+    <img
+      class="nav-logo-img"
+      src="logo.jpg"
+      alt="Maison Garrido Events"
+      onerror="this.classList.add('hidden');document.getElementById('nav-logo-fallback').classList.add('visible')"
+    />
+    <span class="nav-logo-text" id="nav-logo-fallback">Maison Garrido Events</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#apropos">À Propos</a></li>
+    <li><a href="#approche">Mon Approche</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#philosophie">Philosophie</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+
+<!-- ═══════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-photo-bg">
+    <!--
+      ★ PHOTO DE FOND HERO (optionnel) ★
+      Pour ajouter une photo de fond dans le hero :
+      1. Mettez votre photo dans le même dossier que index.html
+      2. Dans le CSS, trouvez ".hero-photo-bg" et décommentez la ligne :
+         background-image: url('hero-photo.jpg');
+      3. Remplacez 'hero-photo.jpg' par votre nom de fichier
+      4. Ajustez l'opacité (actuellement 0.18) selon vos préférences
+    -->
+  </div>
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="float-shape"></div>
+  <div class="float-shape"></div>
+  <div class="float-shape"></div>
+  <div class="float-shape"></div>
+  <div class="float-shape"></div>
+  <div class="float-shape"></div>
+
+  <div class="hero-content">
+    <!--
+      ★ LOGO CENTRÉ DANS LE HERO ★
+      Même logique que le logo nav — remplacez "logo.jpg" par votre fichier.
+      Si vous ne voulez pas le logo ici, ajoutez style="display:none" à la balise img.
+    -->
+    <img
+      class="hero-logo-img"
+      src="logo.jpg"
+      alt="Maison Garrido Events"
+      onerror="this.style.display='none'"
+    />
+
+    <p class="hero-tag">✨ Création d'Événements sur Mesure</p>
+    <h1>Des Célébrations <em>Inoubliables</em><br>pour Vos Plus Beaux Moments</h1>
+    <p class="hero-sub">Mariages, baptêmes, anniversaires et événements privés — chaque instant mérite d'être magnifique.</p>
+    <div class="hero-cta">
+      <a class="btn" href="#contact">Planifier Mon Événement</a>
+      <a class="btn btn-outline" href="#services">Découvrir Nos Services</a>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Découvrir</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════
+     À PROPOS
+═══════════════════════════════════════════ -->
+<div id="apropos" class="section-wrap alt">
+  <div class="inner">
+    <div class="about-grid">
+
+      <div class="about-text reveal">
+        <p class="section-tag">À Propos</p>
+        <h2>Bienvenue chez<br><em>Maison Garrido Events</em></h2>
+        <div class="divider"></div>
+        <p>
+          <!-- ★ Remplacez ce paragraphe par votre présentation personnelle ★ -->
+          Nous sommes une agence événementielle boutique basée à Genève, dédiée à la création d'expériences uniques et chaleureuses. Chaque événement est pensé comme une histoire à raconter — la vôtre.
+        </p>
+        <p>
+          <!-- ★ Remplacez ce paragraphe par votre parcours, vos valeurs ★ -->
+          Fondée avec la passion du détail et l'amour des belles choses, Maison Garrido Events accompagne ses clients de la première idée jusqu'au dernier sourire de la soirée.
+        </p>
+        <p>
+          <!-- ★ Ajoutez ici votre histoire personnelle, votre expérience ★ -->
+          Remplacez ce texte par votre propre histoire — votre parcours, votre passion et ce qui vous a amenée à créer Maison Garrido Events.
+        </p>
+        <br>
+        <a class="btn btn-outline" href="#contact">Me Contacter</a>
+      </div>
+
+      <div class="about-photo reveal">
+        <!--
+          ★ VOTRE PHOTO (portrait ou ambiance) ★
+          1. Mettez votre photo dans le même dossier que index.html
+          2. Remplacez "photo-apropos.jpg" par votre nom de fichier
+          3. La photo sera recadrée automatiquement (object-fit: cover)
+        -->
+        <img
+          src="photo-apropos.jpg"
+          alt="Maison Garrido Events"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+        />
+        <div class="about-photo-placeholder" style="display:none">
+          <div class="ph-icon">📸</div>
+          <p>Ajoutez ici votre photo<br><strong>photo-apropos.jpg</strong></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     MON APPROCHE
+═══════════════════════════════════════════ -->
+<div id="approche" class="section-wrap plain">
+  <div class="inner">
+    <div class="reveal" style="text-align:center;max-width:600px;margin:0 auto 0;">
+      <p class="section-tag">Mon Approche</p>
+      <h2>Une Méthode au Service de <em>Votre Vision</em></h2>
+      <div class="divider" style="margin:1.4rem auto;"></div>
+      <p style="color:var(--text-muted);font-size:0.97rem;">
+        <!-- ★ Décrivez ici votre méthode de travail en quelques mots ★ -->
+        Chaque collaboration commence par une écoute attentive. Je construis avec vous, étape par étape, l'événement qui vous ressemble.
+      </p>
+    </div>
+
+    <div class="approche-grid reveal">
+      <div class="approche-card">
+        <div class="approche-icon">👂</div>
+        <div class="approche-title">Écoute & Conseil</div>
+        <p class="approche-desc">
+          <!-- ★ Personnalisez ce texte ★ -->
+          Tout commence par une conversation. Je prends le temps de comprendre vos envies, votre budget et vos contraintes pour vous proposer une vision claire et réalisable.
+        </p>
+      </div>
+      <div class="approche-card">
+        <div class="approche-icon">🎨</div>
+        <div class="approche-title">Création Sur Mesure</div>
+        <p class="approche-desc">
+          <!-- ★ Personnalisez ce texte ★ -->
+          Chaque événement est unique. Je conçois une expérience personnalisée, en sélectionnant avec soin les prestataires, la décoration et les moindres détails qui feront la différence.
+        </p>
+      </div>
+      <div class="approche-card">
+        <div class="approche-icon">🌸</div>
+        <div class="approche-title">Sérénité le Jour J</div>
+        <p class="approche-desc">
+          <!-- ★ Personnalisez ce texte ★ -->
+          Le jour de votre événement, vous profitez. Je coordonne tout en coulisses pour que chaque instant se déroule avec fluidité, élégance et sans stress.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     SERVICES
+═══════════════════════════════════════════ -->
+<div id="services" class="section-wrap alt">
+  <div class="inner">
+    <div class="services-intro reveal">
+      <p class="section-tag">Services</p>
+      <h2>Des Prestations pour <em>Chaque Célébration</em></h2>
+      <div class="divider"></div>
+      <p style="color:var(--text-muted);font-size:0.97rem;max-width:560px;">
+        <!-- ★ Décrivez brièvement l'offre globale ★ -->
+        Que vous prépariez un mariage de rêve, un baptême tout en douceur ou un anniversaire mémorable, Maison Garrido Events vous accompagne avec passion et professionnalisme.
+      </p>
+    </div>
+
+    <div class="services-grid reveal">
+
+      <!-- SERVICE 1 : MARIAGES -->
+      <div class="service-card">
+        <div class="service-photo">
+          <!--
+            ★ PHOTO — Mariages ★
+            Remplacez "photo-mariage.jpg" par votre fichier.
+          -->
+          <img
+            src="photo-mariage.jpg"
+            alt="Mariages"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+          />
+          <div class="gallery-ph" style="display:none;background:var(--rose-lt);">
+            <span>💍</span>
+            <p>photo-mariage.jpg</p>
+          </div>
+        </div>
+        <div class="service-body">
+          <div class="service-icon">💍</div>
+          <div class="service-title">Mariages</div>
+          <p class="service-desc">
+            <!-- ★ Personnalisez ce texte ★ -->
+            Votre mariage est l'événement d'une vie. Je prends en charge la coordination complète — de la recherche du lieu à la direction artistique, en passant par la gestion des prestataires — pour que vous viviez ce jour pleinement, sans vous soucier de rien.
+          </p>
+          <ul class="service-list">
+            <li>Organisation complète ou partielle</li>
+            <li>Coordination le jour J</li>
+            <li>Décoration & scénographie</li>
+            <li>Sélection des prestataires</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- SERVICE 2 : BAPTÊMES -->
+      <div class="service-card">
+        <div class="service-photo">
+          <!--
+            ★ PHOTO — Baptêmes ★
+            Remplacez "photo-bapteme.jpg" par votre fichier.
+          -->
+          <img
+            src="photo-bapteme.jpg"
+            alt="Baptêmes"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+          />
+          <div class="gallery-ph" style="display:none;background:var(--mint-lt);">
+            <span>🕊️</span>
+            <p>photo-bapteme.jpg</p>
+          </div>
+        </div>
+        <div class="service-body">
+          <div class="service-icon">🕊️</div>
+          <div class="service-title">Baptêmes</div>
+          <p class="service-desc">
+            <!-- ★ Personnalisez ce texte ★ -->
+            Un baptême est un moment de tendresse et de partage. Je crée une ambiance chaleureuse et élégante qui célèbre ce beau début de vie, avec une attention toute particulière aux petits détails qui touchent le cœur.
+          </p>
+          <ul class="service-list">
+            <li>Thème & décoration personnalisés</li>
+            <li>Coordination cérémonie & réception</li>
+            <li>Animation & accueil des invités</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- SERVICE 3 : ANNIVERSAIRES -->
+      <div class="service-card">
+        <div class="service-photo">
+          <!--
+            ★ PHOTO — Anniversaires ★
+            Remplacez "photo-anniversaire.jpg" par votre fichier.
+          -->
+          <img
+            src="photo-anniversaire.jpg"
+            alt="Anniversaires"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+          />
+          <div class="gallery-ph" style="display:none;background:var(--lav-lt);">
+            <span>🎂</span>
+            <p>photo-anniversaire.jpg</p>
+          </div>
+        </div>
+        <div class="service-body">
+          <div class="service-icon">🎂</div>
+          <div class="service-title">Anniversaires</div>
+          <p class="service-desc">
+            <!-- ★ Personnalisez ce texte ★ -->
+            Que ce soit un 1 an ou un 50 ans, chaque anniversaire mérite d'être fêté avec panache. Je conçois des célébrations sur mesure, de l'ambiance festive à la mise en scène, pour des souvenirs qui durent.
+          </p>
+          <ul class="service-list">
+            <li>Concept & thème créatif</li>
+            <li>Décoration & ambiance</li>
+            <li>Gâteau & traiteur sur mesure</li>
+            <li>Animation & surprises</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- SERVICE 4 : ÉVÉNEMENTS PRIVÉS & FAMILIAUX -->
+      <div class="service-card">
+        <div class="service-photo">
+          <!--
+            ★ PHOTO — Événements privés ★
+            Remplacez "photo-prive.jpg" par votre fichier.
+          -->
+          <img
+            src="photo-prive.jpg"
+            alt="Événements privés et familiaux"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+          />
+          <div class="gallery-ph" style="display:none;background:var(--peach-lt);">
+            <span>🏡</span>
+            <p>photo-prive.jpg</p>
+          </div>
+        </div>
+        <div class="service-body">
+          <div class="service-icon">🏡</div>
+          <div class="service-title">Événements Privés & Familiaux</div>
+          <p class="service-desc">
+            <!-- ★ Personnalisez ce texte ★ -->
+            Réunions de famille, fêtes de fin d'année, baby showers, retrouvailles entre amis — chaque rassemblement, aussi intime soit-il, est l'occasion de créer des instants précieux. Je m'occupe de tout pour que vous soyez pleinement présente.
+          </p>
+          <ul class="service-list">
+            <li>Organisation clé en main</li>
+            <li>Décoration & ambiance</li>
+            <li>Traiteur & accueil</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     GALERIE PHOTOS
+═══════════════════════════════════════════ -->
+<div class="section-wrap plain">
+  <div class="inner">
+    <div class="reveal" style="text-align:center;margin-bottom:2.5rem;">
+      <p class="section-tag">Galerie</p>
+      <h2>Quelques-uns de Nos <em>Plus Beaux Moments</em></h2>
+      <div class="divider" style="margin:1.4rem auto;"></div>
+    </div>
+
+    <!--
+      ★ GALERIE — 5 photos ★
+      Remplacez chaque src="" par votre nom de fichier.
+      Noms suggérés : galerie-1.jpg, galerie-2.jpg, galerie-3.jpg, galerie-4.jpg, galerie-5.jpg
+      La première photo est plus grande (occupe 2 colonnes et 2 rangées).
+    -->
+    <div class="gallery-strip reveal">
+
+      <div class="gallery-item">
+        <img src="galerie-1.jpg" alt="Événement 1"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="gallery-ph" style="display:none;background:var(--rose-lt);">
+          <span>🌸</span><p>galerie-1.jpg<br>(grande photo)</p>
+        </div>
+        <div class="gallery-overlay"><span class="gallery-overlay-text">Votre légende ici</span></div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="galerie-2.jpg" alt="Événement 2"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="gallery-ph" style="display:none;background:var(--mint-lt);">
+          <span>🥂</span><p>galerie-2.jpg</p>
+        </div>
+        <div class="gallery-overlay"><span class="gallery-overlay-text">Votre légende ici</span></div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="galerie-3.jpg" alt="Événement 3"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="gallery-ph" style="display:none;background:var(--lav-lt);">
+          <span>💐</span><p>galerie-3.jpg</p>
+        </div>
+        <div class="gallery-overlay"><span class="gallery-overlay-text">Votre légende ici</span></div>
+      </div>
+
+      <div class="gallery-item">
+        <img src="galerie-4.jpg" alt="Événement 4"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <div class="gallery-ph" style="display:none;background:var(--peach-lt);">
+          <span>🎂</span><p>galerie-4.jpg</p>
+        </div>
+        <div class="gallery-overlay"><span class="gallery-overlay-text">Votre légende ici</span></div>
+      </div>
+
+    </div>
+
+    <p style="text-align:center;margin-top:1.5rem;font-size:0.82rem;color:var(--text-muted);font-style:italic;">
+      Placez vos photos dans le même dossier que <code>index.html</code> avec les noms indiqués ci-dessus.
+    </p>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     PHILOSOPHIE
+═══════════════════════════════════════════ -->
+<div id="philosophie" class="section-wrap plain">
+  <div class="inner">
+    <div class="philo-wrap reveal">
+      <p class="section-tag">Philosophie</p>
+      <h2>Ce en Quoi Je <em>Crois</em></h2>
+      <div class="divider"></div>
+
+      <p class="philo-quote">
+        <!-- ★ Votre citation ou devise personnelle ★ -->
+        « Un événement réussi, c'est celui où l'on sent que tout a été pensé avec amour — et où rien ne semble avoir demandé d'effort. »
+      </p>
+
+      <p class="philo-text">
+        <!-- ★ Remplacez par votre philosophie, vos valeurs profondes ★ -->
+        Je crois que chaque célébration est un acte d'amour. Qu'il s'agisse d'unir deux personnes, d'accueillir un enfant dans le monde ou de réunir une famille autour d'une table, chaque moment mérite d'être vécu pleinement, sans stress et avec une beauté qui vous ressemble.
+      </p>
+      <p class="philo-text">
+        <!-- ★ Deuxième paragraphe de philosophie ★ -->
+        Mon rôle est de disparaître dans les coulisses pour que vous soyez entièrement présente à vos émotions, à vos proches et à votre bonheur. C'est cette discrétion alliée à l'excellence qui est au cœur de Maison Garrido Events.
+      </p>
+
+      <div class="philo-values">
+        <span class="philo-value">✦ Élégance</span>
+        <span class="philo-value">✦ Bienveillance</span>
+        <span class="philo-value">✦ Authenticité</span>
+        <span class="philo-value">✦ Attention au détail</span>
+        <span class="philo-value">✦ Sérénité</span>
+        <span class="philo-value">✦ Sur mesure</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     CONTACT
+═══════════════════════════════════════════ -->
+<div id="contact" class="section-wrap alt">
+  <div class="inner">
+    <div class="contact-grid">
+
+      <div class="contact-info reveal">
+        <p class="section-tag">Contact</p>
+        <h2>Parlons de Votre <em>Projet</em></h2>
+        <div class="divider"></div>
+        <p>
+          Vous avez un projet en tête ? Je serais ravie d'en discuter avec vous. Remplissez le formulaire ou contactez-moi directement — je vous réponds sous 24 heures.
+        </p>
+        <ul class="contact-details">
+          <li>
+            <span class="detail-label">E-mail</span>
+            <!-- ★ Remplacez par votre adresse e-mail ★ -->
+            <span class="detail-val">bonjour@maisongarrido.ch</span>
+          </li>
+          <li>
+            <span class="detail-label">Téléphone</span>
+            <!-- ★ Remplacez par votre numéro ★ -->
+            <span class="detail-val">+41 00 000 00 00</span>
+          </li>
+          <li>
+            <span class="detail-label">Lieu</span>
+            <span class="detail-val">Genève, Suisse</span>
+          </li>
+          <li>
+            <span class="detail-label">Disponibilité</span>
+            <span class="detail-val">Lun – Ven, 9h00 – 18h00</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="contact-form reveal">
+        <div class="form-group">
+          <label for="name">Votre Nom</label>
+          <input type="text" id="name" placeholder="Marie Dupont" />
+        </div>
+        <div class="form-group">
+          <label for="email">Adresse E-mail</label>
+          <input type="email" id="email" placeholder="vous@exemple.com" />
+        </div>
+        <div class="form-group">
+          <label for="phone">Téléphone (optionnel)</label>
+          <input type="tel" id="phone" placeholder="+41 00 000 00 00" />
+        </div>
+        <div class="form-group">
+          <label for="event-type">Type d'Événement</label>
+          <select id="event-type">
+            <option value="" disabled selected>Choisissez un type d'événement</option>
+            <option>Mariage</option>
+            <option>Baptême</option>
+            <option>Anniversaire</option>
+            <option>Événement privé ou familial</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="date">Date envisagée</label>
+          <input type="text" id="date" placeholder="ex. Juin 2026" />
+        </div>
+        <div class="form-group">
+          <label for="message">Parlez-moi de Votre Projet</label>
+          <textarea id="message" placeholder="Décrivez votre événement — lieu souhaité, nombre d'invités, ambiance, vos envies…"></textarea>
+        </div>
+        <div>
+          <button class="btn" onclick="handleSubmit()">Envoyer Ma Demande ✨</button>
+        </div>
+        <div id="form-msg" style="font-size:0.88rem;color:var(--rose-dk);margin-top:0.75rem;display:none;font-weight:700;">
+          ✨ Merci pour votre message ! Je vous recontacte très bientôt.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════ -->
+<footer>
+  <div class="footer-logo">Maison Garrido Events</div>
+  <div class="footer-copy">© 2025 Maison Garrido Events · Genève, Suisse</div>
+  <div class="footer-links">
+    <a href="#apropos">À Propos</a>
+    <a href="#services">Services</a>
+    <a href="#philosophie">Philosophie</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+
+<script>
+  // Nav scroll shadow
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+
+  // Contact form
+  function handleSubmit() {
+    const name  = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    if (!name || !email) {
+      alert('Veuillez renseigner au moins votre nom et votre adresse e-mail.');
+      return;
+    }
+    document.getElementById('form-msg').style.display = 'block';
+  }
+</script>
+</body>
+</html>
