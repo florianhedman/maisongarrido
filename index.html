@@ -59,7 +59,7 @@
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       padding: 1rem 4rem;
       display: flex; align-items: center; justify-content: space-between;
-      background: #F8F2EC;
+      background: var(--cream);
       border-bottom: 1px solid rgba(242,167,187,0.2);
       transition: box-shadow 0.3s;
     }
@@ -117,10 +117,7 @@
       z-index: 0;
     }
 
-    .blob { position: absolute; border-radius: 50%; filter: blur(60px); opacity: 0.38; pointer-events: none; }
-    .blob-1 { width: 520px; height: 520px; background: var(--rose-lt);   top: -120px; right: -120px; }
-    .blob-2 { width: 420px; height: 420px; background: var(--mint-lt);   bottom: -60px; left: -100px; }
-    .blob-3 { width: 320px; height: 320px; background: var(--lav-lt);    top: 38%; left: 58%; }
+
 
     .hero-content { position: relative; z-index: 2; }
 
@@ -498,9 +495,7 @@
       4. Ajustez l'opacité (actuellement 0.18) selon vos préférences
     -->
   </div>
-  <div class="blob blob-1"></div>
-  <div class="blob blob-2"></div>
-  <div class="blob blob-3"></div>
+
   <div class="float-shape"></div>
   <div class="float-shape"></div>
   <div class="float-shape"></div>
