@@ -39,20 +39,7 @@
       overflow-x: hidden;
     }
 
-    body::before {
-      content: '';
-      position: fixed; inset: 0;
-      background-image:
-        radial-gradient(circle, var(--rose-lt) 2px, transparent 2px),
-        radial-gradient(circle, var(--mint-lt) 2px, transparent 2px),
-        radial-gradient(circle, var(--lav-lt)  2px, transparent 2px),
-        radial-gradient(circle, var(--peach-lt)2px, transparent 2px);
-      background-size: 120px 120px, 80px 80px, 100px 100px, 90px 90px;
-      background-position: 0 0, 40px 40px, 70px 10px, 20px 70px;
-      opacity: 0.45;
-      pointer-events: none;
-      z-index: 0;
-    }
+
 
     /* ── NAV ── */
     nav {
@@ -179,16 +166,7 @@
     .btn-outline { background: transparent; color: var(--rose-dk); }
     .btn-outline:hover { background: var(--rose-dk); color: var(--white); }
 
-    .float-shape {
-      position: absolute; border-radius: 50%; opacity: 0.45;
-      animation: floatAnim 8s ease-in-out infinite;
-    }
-    .float-shape:nth-child(1){ width:16px;height:16px;background:var(--rose);    top:22%;left:9%;   animation-delay:0s; }
-    .float-shape:nth-child(2){ width:11px;height:11px;background:var(--mint);    top:62%;left:6%;   animation-delay:1.5s; }
-    .float-shape:nth-child(3){ width:20px;height:20px;background:var(--lavender);top:28%;right:7%;  animation-delay:0.8s; }
-    .float-shape:nth-child(4){ width:10px;height:10px;background:var(--peach);   top:72%;right:10%; animation-delay:2s; }
-    .float-shape:nth-child(5){ width:14px;height:14px;background:var(--rose-lt); top:82%;left:22%;  animation-delay:1s;   border-radius:4px;transform:rotate(45deg); }
-    .float-shape:nth-child(6){ width:13px;height:13px;background:var(--mint-lt); top:14%;right:24%; animation-delay:2.5s; border-radius:4px;transform:rotate(20deg); }
+
 
     .scroll-hint {
       position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
@@ -496,12 +474,7 @@
     -->
   </div>
 
-  <div class="float-shape"></div>
-  <div class="float-shape"></div>
-  <div class="float-shape"></div>
-  <div class="float-shape"></div>
-  <div class="float-shape"></div>
-  <div class="float-shape"></div>
+
 
   <div class="hero-content">
     <img
